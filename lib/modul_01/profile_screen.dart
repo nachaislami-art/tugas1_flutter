@@ -165,7 +165,7 @@ class _ProfileInfoTile extends StatelessWidget {
         const SizedBox(width: 16),
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 label,
