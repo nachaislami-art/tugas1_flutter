@@ -29,7 +29,10 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
-        title: const Text('Profil Mahasiswa', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Profil Mahasiswa',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: const Color(0xFF0284C7),
         foregroundColor: Colors.white,
         centerTitle: true,
@@ -87,10 +90,103 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 24),
+
+              // Card Informasi
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: BorderSide(color: Colors.grey.shade200),
+                ),
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: const [
+                      _ProfileInfoTile(
+                        icon: Icons.domain_rounded,
+                        label: 'Jurusan',
+                        value: 'Bisnis dan Informatika',
+                      ),
+                      Divider(height: 24, thickness: 0.5),
+                      _ProfileInfoTile(
+                        icon: Icons.code_rounded,
+                        label: 'Program Studi',
+                        value: 'Sarjana Terapan TRPL',
+                      ),
+                      Divider(height: 24, thickness: 0.5),
+                      _ProfileInfoTile(
+                        icon: Icons.location_on_rounded,
+                        label: 'Kampus',
+                        value: 'Politeknik Negeri Banyuwangi',
+                      ),
+                      Divider(height: 24, thickness: 0.5),
+                      _ProfileInfoTile(
+                        icon: Icons.calendar_today_rounded,
+                        label: 'Semester / TA',
+                        value: 'Semester 5 (2026/2027)',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _ProfileInfoTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+
+  const _ProfileInfoTile({
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: const Color(0xFFE0F2FE),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(icon, color: const Color(0xFF0284C7), size: 20),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAlignment.start,
+            children: [
+              Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF64748B),
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0F172A),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
